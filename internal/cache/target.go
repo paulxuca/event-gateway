@@ -42,7 +42,7 @@ func (tc *Target) InvokableFunction(path string, space string, id function.ID) b
 	tc.subscriptionCache.RLock()
 	defer tc.subscriptionCache.RUnlock()
 
-	_, exists := tc.subscriptionCache.invokable[path][libkv.FunctionKey{Space: space, ID: id}]
+	_, exists := tc.functionCache.cache[libkv.FunctionKey{Space: space, ID: id}]
 	return exists
 }
 
